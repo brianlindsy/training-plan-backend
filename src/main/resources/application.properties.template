@@ -1,0 +1,4 @@
+spring.jpa.hibernate.database-platform=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto=create-drop
+spring.datasource.url=
+spring.datasource.username=
