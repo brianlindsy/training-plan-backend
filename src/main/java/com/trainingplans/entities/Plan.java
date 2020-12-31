@@ -26,7 +26,7 @@ public class Plan {
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="plan_id")
-	private List<Day> days;
+	private List<Week> weeks;
 
 	public Long getId() {
 		return id;
@@ -52,12 +52,12 @@ public class Plan {
 		this.title = title;
 	}
 
-	public List<Day> getDays() {
-		return days;
+	public List<Week> getWeeks() {
+		return weeks;
 	}
 
-	public void setDays(List<Day> days) {
-		this.days = days;
+	public void setWeeks(List<Week> weeks) {
+		this.weeks = weeks;
 	}
 
 }

@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.trainingplans.entities.Plan;
@@ -27,6 +28,13 @@ public class PlanController {
 	@PostMapping(value = "/rest/plan")
 	public Plan createNewPlan() {
 		Plan plan = planService.createNewPlan();
+		
+		return plan;
+	}
+	
+	@PutMapping(value = "/rest/plan/{planId}/addWeek")
+	public Plan addWeekToPlan(@PathVariable String planId) {
+		Plan plan = planService.addNewWeek(planId);
 		
 		return plan;
 	}
