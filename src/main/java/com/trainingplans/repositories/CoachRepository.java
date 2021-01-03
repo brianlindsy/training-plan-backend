@@ -7,5 +7,5 @@ import com.trainingplans.entities.Coach;
 
 @Component
 public interface CoachRepository extends CrudRepository<Coach, Long> {
-
+	Coach findByEmail(String email);
 }

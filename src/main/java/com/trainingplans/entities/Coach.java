@@ -17,7 +17,13 @@ public class Coach {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	private String name;
+	private String familyName;
+	
+	private String givenName;
+	
+	private String email;
+	
+	private String pictureUrl;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="coach_id")
@@ -31,12 +37,36 @@ public class Coach {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getFamilyName() {
+		return familyName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFamilyName(String familyName) {
+		this.familyName = familyName;
+	}
+
+	public String getGivenName() {
+		return givenName;
+	}
+
+	public void setGivenName(String givenName) {
+		this.givenName = givenName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPictureUrl() {
+		return pictureUrl;
+	}
+
+	public void setPictureUrl(String pictureUrl) {
+		this.pictureUrl = pictureUrl;
 	}
 
 	public List<Plan> getPlans() {
