@@ -65,6 +65,19 @@ public class PlanService {
 		return savedPlan;
 	}
 	
+	public Plan update(Plan updateTo, String planId) {
+		
+		validatePlan(planId);
+		
+		Plan plan = getPlanWithSortedWeeksAndDays(planId);
+		
+		updateTo.setId(plan.getId());
+		
+		Plan savedPlan = planRepository.save(updateTo);
+		
+		return savedPlan;
+	}
+	
 	public Plan getPlanById(String planId) {
 		
 		validatePlan(planId);
