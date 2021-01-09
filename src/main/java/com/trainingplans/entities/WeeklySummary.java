@@ -1,7 +1,5 @@
 package com.trainingplans.entities;
 
-import java.util.Date;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,16 +8,16 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Day {
+public class WeeklySummary {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	private Date date;
-	
 	@OneToOne(cascade=CascadeType.ALL)
-	private Workout workout;
+	private TrainingPhase trainingPhase;
+	
+	private String coachingNotes;
 
 	public Long getId() {
 		return id;
@@ -29,20 +27,20 @@ public class Day {
 		this.id = id;
 	}
 
-	public Date getDate() {
-		return date;
+	public TrainingPhase getTrainingPhase() {
+		return trainingPhase;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setTrainingPhase(TrainingPhase trainingPhase) {
+		this.trainingPhase = trainingPhase;
 	}
 
-	public Workout getWorkout() {
-		return workout;
+	public String getCoachingNotes() {
+		return coachingNotes;
 	}
 
-	public void setWorkout(Workout workout) {
-		this.workout = workout;
+	public void setCoachingNotes(String coachingNotes) {
+		this.coachingNotes = coachingNotes;
 	}
 
 }

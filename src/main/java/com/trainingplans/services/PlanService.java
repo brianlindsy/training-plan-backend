@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,10 @@ import org.springframework.web.server.ResponseStatusException;
 import com.trainingplans.entities.Day;
 import com.trainingplans.entities.Plan;
 import com.trainingplans.entities.Week;
+import com.trainingplans.entities.WeeklySummary;
+import com.trainingplans.entities.WorkoutTypeEnum;
 import com.trainingplans.repositories.PlanRepository;
+import com.trainingplans.repositories.WeeklySummaryRepository;
 import com.trainingplans.utils.DayComparator;
 import com.trainingplans.utils.WeekComparator;
 
@@ -23,6 +27,9 @@ public class PlanService {
 	
 	@Autowired
 	private PlanRepository planRepository;
+	
+	@Autowired
+	private WeeklySummaryRepository weeklySummaryRepository;
 	
 	@Autowired
 	private DayService dayService;
@@ -94,6 +101,14 @@ public class PlanService {
 		}
 	}
 	
+	public WeeklySummary createNewWeeklySummary() {
+		WeeklySummary weeklySummary = new WeeklySummary();
+		
+		WeeklySummary weeklySummarySaved = weeklySummaryRepository.save(weeklySummary);
+		
+		return weeklySummarySaved;
+	}
+	
 	public Date getStartDateOfNewWeek(Plan plan) {
 		int numWeeks = plan.getWeeks().size();
 		
@@ -138,10 +153,28 @@ public class PlanService {
 			calendar.setTime(start);
 			calendar.add(Calendar.DATE, i);
 			Day day = dayService.createNewDay(calendar.getTime());
+			
 			week.getDays().add(day);
 		}
 		
+		WeeklySummary weeklySummary = createNewWeeklySummary();
+		
+		week.setWeeklySummary(weeklySummary);
+		
 		return week;
+	}
+	
+	public List<String> getWorkoutTypes(){
+		
+		ArrayList<String> workoutTypes = new ArrayList<String>();
+		
+		WorkoutTypeEnum[] enums = WorkoutTypeEnum.values();
+		
+		for(int i=0;i<enums.length;i++) {
+			workoutTypes.add(WorkoutTypeEnum.values()[i].name());
+		}
+		
+		return workoutTypes;
 	}
 
 }

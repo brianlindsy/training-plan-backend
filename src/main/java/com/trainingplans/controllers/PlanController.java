@@ -1,5 +1,7 @@
 package com.trainingplans.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +26,13 @@ public class PlanController {
 		Plan plan = planService.getPlanById(planId);
 		
 		return plan;
+	}
+	
+	@GetMapping(value = "/rest/plan/workoutTypes")
+	public List<String> getPlan() {
+		List<String> workoutTypes = planService.getWorkoutTypes();
+		
+		return workoutTypes;
 	}
 	
 	@PostMapping(value = "/rest/plan")

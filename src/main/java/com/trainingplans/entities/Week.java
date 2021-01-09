@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Week {
@@ -22,6 +23,9 @@ public class Week {
 	private List<Day> days;
 	
 	private int weekNumber;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	private WeeklySummary weeklySummary;
 
 	public Long getId() {
 		return id;
@@ -45,6 +49,14 @@ public class Week {
 
 	public void setWeekNumber(int weekNumber) {
 		this.weekNumber = weekNumber;
+	}
+
+	public WeeklySummary getWeeklySummary() {
+		return weeklySummary;
+	}
+
+	public void setWeeklySummary(WeeklySummary weeklySummary) {
+		this.weeklySummary = weeklySummary;
 	}
 
 }
