@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -31,6 +32,9 @@ public class PlanService {
 	@Autowired
 	private WeeklySummaryRepository weeklySummaryRepository;
 	
+	@Value("${defaultTrainingPlanTitle}")
+	private String defaultTrainingPlanTitle;
+	
 	@Autowired
 	private DayService dayService;
 	
@@ -40,7 +44,7 @@ public class PlanService {
 		String planId = createNewPlanUniqueId();
 		plan.setPlanUniqueId(planId);
 		
-		plan.setTitle(planId + " training plan.");
+		plan.setTitle(defaultTrainingPlanTitle);
 		
 		Date today = new Date();
 		

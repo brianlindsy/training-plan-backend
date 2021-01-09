@@ -31,7 +31,7 @@ public class DayService {
 		Workout workout = new Workout();
 		
 		WorkoutType type = new WorkoutType();
-		type.setWorkoutTypeName(WorkoutTypeEnum.EASY);
+		type.setWorkoutTypeName(WorkoutTypeEnum.REST);
 		workout.setWorkoutType(type);
 		
 		workoutRepository.save(workout);
