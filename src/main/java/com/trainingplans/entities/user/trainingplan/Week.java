@@ -1,4 +1,4 @@
-package com.trainingplans.entities;
+package com.trainingplans.entities.user.trainingplan;
 
 import java.util.List;
 

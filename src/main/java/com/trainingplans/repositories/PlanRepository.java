@@ -2,7 +2,7 @@ package com.trainingplans.repositories;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 
-import com.trainingplans.entities.Plan;
+import com.trainingplans.entities.user.trainingplan.Plan;
 
 @Component
 public interface PlanRepository extends CrudRepository<Plan, Long> {

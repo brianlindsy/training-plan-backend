@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.trainingplans.entities.Day;
+import com.trainingplans.entities.user.trainingplan.Day;
 import com.trainingplans.services.DayService;
 
 @RestController

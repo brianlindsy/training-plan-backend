@@ -1,4 +1,4 @@
-package com.trainingplans.entities;
+package com.trainingplans.entities.user.trainingplan;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

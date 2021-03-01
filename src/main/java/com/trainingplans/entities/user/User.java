@@ -1,4 +1,4 @@
-package com.trainingplans.entities;
+package com.trainingplans.entities.user;
 
 import java.util.List;
 
@@ -8,10 +8,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+import com.trainingplans.entities.user.trainingplan.Plan;
 
 @Entity
-public class Coach {
+@Table(name="users")
+public class User {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -25,8 +29,12 @@ public class Coach {
 	
 	private String pictureUrl;
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="coach_id")
+	private String biography;
+	
+	private String goals;
+
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="user_id")
 	private List<Plan> plans;
 
 	public Long getId() {
@@ -76,5 +84,20 @@ public class Coach {
 	public void setPlans(List<Plan> plans) {
 		this.plans = plans;
 	}
+	
+	public String getBiography() {
+		return biography;
+	}
 
+	public void setBiography(String biography) {
+		this.biography = biography;
+	}
+
+	public String getGoals() {
+		return goals;
+	}
+
+	public void setGoals(String goals) {
+		this.goals = goals;
+	}
 }

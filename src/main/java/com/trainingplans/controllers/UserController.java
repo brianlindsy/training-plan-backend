@@ -15,30 +15,31 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken.Payload;
-import com.trainingplans.entities.Coach;
-import com.trainingplans.entities.Plan;
-import com.trainingplans.services.CoachService;
+import com.trainingplans.entities.user.User;
+import com.trainingplans.entities.user.trainingplan.Plan;
+import com.trainingplans.services.UserService;
 import com.trainingplans.utils.GoogleUtils;
 
 @RestController
 @CrossOrigin
-public class CoachController {
+public class UserController {
 	
 	@Autowired
-	private CoachService coachService;
+	private UserService userService;
 	
 	@Autowired
 	private GoogleUtils googleUtils;
 	
-	@GetMapping(value = "/rest/coach/{coachId}")
-	public Coach getCoach(@PathVariable Long coachId) {
-		Coach coach = coachService.getCoachById(coachId);
+	@GetMapping(value = "/rest/user/{userId}")
+	public User getUser(@PathVariable Long userId) {
+		User user = userService.getUserById(userId);
 		
-		return coach;
+		return user;
 	}
 	
-	@PostMapping(value = "/rest/coach/validate")
-	public Coach getCoachByUserId(@RequestBody String tokenId) {
+	@PostMapping(value = "/rest/user/validate")
+	public User createUserUserByGoogleToken(@RequestBody String tokenId) {
+		
 		Payload payload;
 		try {
 			payload = googleUtils.validateAndReturnIdTokenPayload(tokenId);
@@ -47,22 +48,22 @@ public class CoachController {
 			           HttpStatus.SC_INTERNAL_SERVER_ERROR, "Could not validate user.", e);
 		}
 		
-		Coach coachToReturn = null;
+		User userToReturn = null;
 		
 		if(payload != null) {
 			String email = payload.getEmail();
-			if(coachService.findCoachByEmail(email) != null){
-				coachToReturn = coachService.findCoachByEmail(email);
+			if(userService.findUserByEmail(email) != null){
+				userToReturn = userService.findUserByEmail(email);
 			} else {
-				coachToReturn = coachService.createNewCoach(payload);
+				userToReturn = userService.createNewUser(payload);
 			}
 		}
-		return coachToReturn;
+		return userToReturn;
 	}
 	
-	@PutMapping(value = "/rest/coach/{coachId}/addPlan")
-	public Plan addPlanToCoach(@PathVariable Long coachId) {
-		Plan addedPlan = coachService.addPlanToCoach(coachId);
+	@PutMapping(value = "/rest/user/{userId}/addPlan")
+	public Plan addPlanToUser(@PathVariable Long userId) {
+		Plan addedPlan = userService.addPlanToUser(userId);
 		
 		return addedPlan;
 	}

@@ -2,7 +2,7 @@ package com.trainingplans.utils;
 
 import java.util.Comparator;
 
-import com.trainingplans.entities.Week;
+import com.trainingplans.entities.user.trainingplan.Week;
 
 public class WeekComparator implements Comparator<Week>{
 	

@@ -7,10 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.trainingplans.entities.Day;
-import com.trainingplans.entities.Workout;
-import com.trainingplans.entities.WorkoutType;
-import com.trainingplans.entities.WorkoutTypeEnum;
+import com.trainingplans.entities.user.trainingplan.Day;
+import com.trainingplans.entities.user.trainingplan.Workout;
+import com.trainingplans.entities.user.trainingplan.WorkoutType;
+import com.trainingplans.entities.user.trainingplan.WorkoutTypeEnum;
 import com.trainingplans.repositories.DayRepository;
 import com.trainingplans.repositories.WorkoutRepository;
 

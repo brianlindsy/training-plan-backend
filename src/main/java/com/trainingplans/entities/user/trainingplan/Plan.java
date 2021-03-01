@@ -1,4 +1,4 @@
-package com.trainingplans.entities;
+package com.trainingplans.entities.user.trainingplan;
 
 import java.util.List;
 
@@ -27,6 +27,10 @@ public class Plan {
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="plan_id")
 	private List<Week> weeks;
+	
+	private boolean isPublic = true;
+	
+	private boolean isActive = true;
 
 	public Long getId() {
 		return id;
@@ -58,6 +62,22 @@ public class Plan {
 
 	public void setWeeks(List<Week> weeks) {
 		this.weeks = weeks;
+	}
+
+	public boolean isPublic() {
+		return isPublic;
+	}
+
+	public void setPublic(boolean isPublic) {
+		this.isPublic = isPublic;
+	}
+
+	public boolean isActive() {
+		return isActive;
+	}
+
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
 	}
 
 }

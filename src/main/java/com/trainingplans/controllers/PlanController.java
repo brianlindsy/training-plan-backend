@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.trainingplans.entities.Plan;
+import com.trainingplans.entities.user.trainingplan.Plan;
 import com.trainingplans.services.PlanService;
 
 @RestController

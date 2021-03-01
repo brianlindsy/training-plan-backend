@@ -13,11 +13,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.trainingplans.entities.Day;
-import com.trainingplans.entities.Plan;
-import com.trainingplans.entities.Week;
-import com.trainingplans.entities.WeeklySummary;
-import com.trainingplans.entities.WorkoutTypeEnum;
+import com.trainingplans.entities.user.trainingplan.Day;
+import com.trainingplans.entities.user.trainingplan.Plan;
+import com.trainingplans.entities.user.trainingplan.Week;
+import com.trainingplans.entities.user.trainingplan.WeeklySummary;
+import com.trainingplans.entities.user.trainingplan.WorkoutTypeEnum;
 import com.trainingplans.repositories.PlanRepository;
 import com.trainingplans.repositories.WeeklySummaryRepository;
 import com.trainingplans.utils.DayComparator;

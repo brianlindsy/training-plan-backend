@@ -3,9 +3,9 @@ package com.trainingplans.repositories;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 
-import com.trainingplans.entities.Coach;
+import com.trainingplans.entities.user.User;
 
 @Component
-public interface CoachRepository extends CrudRepository<Coach, Long> {
-	Coach findByEmail(String email);
+public interface UserRepository extends CrudRepository<User, Long> {
+	User findByEmail(String email);
 }
